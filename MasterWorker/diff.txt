@@ -1,0 +1,13 @@
+diff --git a/hw4/src/master.c b/hw4/src/master.c
+index 474d234..64ee9cf 100644
+--- a/hw4/src/master.c
++++ b/hw4/src/master.c
+@@ -168,7 +168,7 @@ int master(int workers) {
+             close(newWorker->worToPar[0]);
+ 
+             execl("./bin/polya_worker", "polya_worker", NULL); 
+-        }
++        } else sf_change_state(newWorker->pid, 0, WORKER_STARTED);
+     }
+ 
+     // Loop until all problems are solved or all workers are not idle
